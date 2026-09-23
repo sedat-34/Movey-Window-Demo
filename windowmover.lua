@@ -1,5 +1,5 @@
 local WindowMover = {}
-local EVENTS = require "windowevents"
+local EVENTS = require "windowevents" --Arbitrary. Can be any script so long as it matches the functionality.
 
 --When WindowMover.isLocked, a new keypress is ignored.
 --When unlocked, they are registered.
