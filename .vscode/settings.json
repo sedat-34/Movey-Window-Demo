@@ -1,0 +1,22 @@
+{
+  "Lua.diagnostics.globals": [
+    "love"
+  ],
+  "Lua.diagnostics.disable": [
+    "duplicate-set-field",
+    "lowercase-global",
+    "undefined-field",
+    "cast-local-type",
+    "unbalanced-assignments"
+  ],
+  "Lua.workspace.library": [
+    "${3rd}/love2d/library",
+    ".vscode/types"
+  ],
+  "Lua.runtime.version": "LuaJIT",
+  "Lua.runtime.special": {
+    "love.filesystem.load": "loadfile",
+  },
+  
+  "Lua.workspace.checkThirdParty": "Apply"
+}
