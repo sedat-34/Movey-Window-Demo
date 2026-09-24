@@ -2,6 +2,7 @@
 Copyright (c) 2026 Sedat Arıtürk. 
 
 See [LICENSE](LICENSE) for details on this project and its dependencies' licenses.
+See [CREDITS](CREDITS) for details on audiovisual assets used in this project.
 
 Made with [LOVE2D](https://github.com/love2d/love), for LOVE2D
 
@@ -18,9 +19,11 @@ Demonstrating a simple window moving across the screen from a random list of set
 ## Running the demo:
 Install LOVE2D version 11.5 and set it up. Make sure "love" can run from your terminal.
 
- `git clone https://github.com/sedat-34/Movey-Window-Demo`
+Navigate in a terminal of your choice to the directory where you wish to store the demo.
 
- `love Movey-Window-Demo`
+`git clone https://github.com/sedat-34/Movey-Window-Demo`
+
+`love Movey-Window-Demo`
 
 ## Interacting with the demo:
 Upon launch, the window is positioned at the center of the screen with placeholder text.
