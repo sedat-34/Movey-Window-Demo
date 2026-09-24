@@ -12,7 +12,7 @@ This is Movey-Window-Demo, made of
 
 * a simple library (windowmover.lua)
 * a set of example events (windowevents.lua)
-* a simple example engine
+* a simple example runtime (main.lua)
 
 Demonstrating a simple window moving across the screen from a random list of set functions.
 
@@ -26,14 +26,28 @@ Navigate in a terminal of your choice to the directory where you wish to store t
 `love Movey-Window-Demo`
 
 ## Interacting with the demo:
+
 Upon launch, the window is positioned at the center of the screen with placeholder text.
 
-Press any key, and the engine will run the current queued command, initially selected randomly from an internal "EVENTLIST".
+Press any key (other than 1), and the engine will run the current queued command, initially selected randomly 
+from its internal EVENTLISTs.
 
 When one EVENTLIST ends, the window will move back to the center.
 
-After this, pressing any key will load a new EVENTLIST.
+After this, pressing any key (other than 1) will load a new EVENTLIST.
 
-This is only the demo functionality. In theory, the program can run any type of window movement
+This is only the demo functionality. In theory, the program can run any type of window movement,
+
+and load any set of arbitrary scripts.
 
 (provided that the movement can be recreated using the external library "flux". see legal info in LICENSE)
+
+Limitations: While the window can be moved very well, rescaling is problematic.
+
+Rapid resizing calls are really intensive to call. This makes it near-impossible to use
+
+flux to change the scale. After heavy testing, the planned feature was abandoned.
+
+The library still keeps track of the window's height and with, but only external scripts can
+
+modify the scale.

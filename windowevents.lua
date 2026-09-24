@@ -1,3 +1,6 @@
+--This file is a set of example functions for the format "windowmover" expects.
+--The events can be any arbitrary code, save for the format of arguments.
+
 local EVENTS = {}
 
 local SCREENMETA = {}
@@ -5,9 +8,8 @@ SCREENMETA.WIDTH, SCREENMETA.HEIGHT  = love.window.getDesktopDimensions()
 
 local function SineTheWindowAcross(time, misc, window)
     local truey = SCREENMETA.HEIGHT/2 - window.h/2 --Keep the initial y level recorded for the sinewaves!
-    local time = time/10
-
     local timesToSineAcross = misc.turns
+    local time = time/(4+3*timesToSineAcross) --splits steps evenly
 
     --A queue of preprogrammed flux statements
     local initialFlux
@@ -18,10 +20,10 @@ local function SineTheWindowAcross(time, misc, window)
 
     local function realfunction()
         if loopindex == 1 then
-            initialFlux = flux.to(window, time, {x = -window.x, y = SCREENMETA.WIDTH/2 - window.h/2})
+            initialFlux = flux.to(window, time, {x = -window.x, y = truey})
         else
             if not loopedatindex[loopindex] then
-                initialFlux = flux.to(window, 0, {x = -window.x, y = SCREENMETA.WIDTH/2 - window.h/2})
+                initialFlux = flux.to(window, 0, {x = -(window.x+1), y = truey})
             end
         end
         if initialFlux and (not loopedatindex[loopindex]) then
@@ -73,7 +75,7 @@ end
 
 --Other than func and time, please place all arguments in "misc".
 
-local DEMO_EVENT_LIST = {
+local SINE_ACROSS = {
     {func = SineTheWindowAcross, time = 10, misc = {turns = 3} },
     {func = CenterTheWindow, time = 5, misc = {} },
 }
@@ -84,7 +86,7 @@ local LOOP_TEST = {
 }
 
 EVENTS.EVENTLIST = {
-    DEMO_EVENT_LIST,
+    SINE_ACROSS,
     LOOP_TEST
 }
 
