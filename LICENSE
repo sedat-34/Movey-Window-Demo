@@ -3,11 +3,12 @@ This software and the used libraries are copyrighted by various authors under va
 "Movey Window Demo" is defined as all files with the extension ".lua" within the base directory of this repository.
 "Libraries" (singular "Library") are various third-party scripts located in the "lib" directory and carry separate licenses.
 
-The authorship information, license year and type, and web page (where applicable) of Movey Window Demo
-is located in the "Auhorship" section.
+The authorship information, license year and type, and web page (where applicable) of Movey Window Demo and its
+external libraries is located in the "Auhorship" section.
 
 The full license texts of all used and developed software is listed in the "License Texts" section. These license
-texts are grouped by "license name"s and are the full license texts provided by the original
+texts are grouped by "license name"s and are the full license texts provided by the original firms who created
+the license texts.
 
 
 SECTIONS START:
@@ -17,6 +18,7 @@ Authorship:
     Software: Movey Window Demo
     Author: Sedat Arıtürk
     Copyright date, license name: (c) 2026, zlib/libpng
+    Web Page: https://github.com/sedat-34/Movey-Window-Demo
 
     Library: flux.lua
     Author: rxi

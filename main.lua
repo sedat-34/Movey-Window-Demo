@@ -4,7 +4,7 @@ tick = require "lib.tick"
 
 function love.load()
     love.graphics.setNewFont(30)
-    WindowMover = require "windowmover"
+    WindowMover:setImage("assets/images/back.png")
 end
 
 function love.update(dt)
@@ -18,5 +18,6 @@ function love.keypressed()
 end
 
 function love.draw()
+    WindowMover:draw()
     love.graphics.print("This is a test string! Don't mind me.")
 end

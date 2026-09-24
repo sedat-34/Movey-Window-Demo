@@ -74,12 +74,12 @@ end
 --Other than func and time, please place all arguments in "misc".
 
 local DEMO_EVENT_LIST = {
-    {func = SineTheWindowAcross, time = 5, misc = {turns = 3} },
+    {func = SineTheWindowAcross, time = 10, misc = {turns = 3} },
     {func = CenterTheWindow, time = 5, misc = {} },
 }
 
 local LOOP_TEST = {
-    {func = LoopingTheScreen, time = 7, misc = {turns = 6}},
+    {func = LoopingTheScreen, time = 13, misc = {turns = 6}},
     {func = CenterTheWindow, time = 5, misc = {} },
 }
 

@@ -21,7 +21,7 @@ local function GetEventList()
     math.randomseed(os.time())
     local random_index = math.random(#EVENTS.EVENTLIST)
     WindowMover.EVENTLIST = EVENTS.EVENTLIST[random_index]
-    WindowMover.eventindex = 1
+    WindowMover.eventindex = 0
 end
 
 function WindowMover:update(dt)
@@ -50,19 +50,34 @@ function WindowMover:keypressed()
     self.eventindex = self.eventindex + 1
 
     local EventTable = self.EVENTLIST[self.eventindex]
-    if not EventTable then GetEventList() end
+    if not EventTable then GetEventList() self.eventindex = 1 end
     EventTable = self.EVENTLIST[self.eventindex]
 
     local WindowEventFunction =  EventTable.func
     local WindowEventTime = EventTable.time
     local WindowEventMiscArgs = EventTable.misc
 
-    if WindowEventFunction then
+    if WindowEventFunction and WindowEventTime and WindowEventMiscArgs then
+
         self.isLocked = true
         WindowEventFunction(WindowEventTime, WindowEventMiscArgs, window)
         tick.delay(function() self.isLocked = false end, WindowEventTime)
+
     end
 
+end
+
+function WindowMover:draw()
+    if self.image then
+        love.graphics.draw(self.image, -window.x, -window.y, 0, self.image_sx, self.image_sy)
+    end
+end
+
+function WindowMover:setImage(path)
+    self.image = love.graphics.newImage(path)
+    local sw, sh = love.window.getDesktopDimensions()
+    self.image_sx = sw/self.image:getWidth()
+    self.image_sy = sh/self.image:getHeight()
 end
 
 GetEventList()
