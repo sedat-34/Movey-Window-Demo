@@ -21,7 +21,7 @@ end
 
 function love.keypressed(key)
     if key == "1" then
-        WindowMover:loadScript("movingevents")
+        WindowMover:loadScript("windowevents")
     else
         WindowMover:initiateEvent()
     end
