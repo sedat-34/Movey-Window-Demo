@@ -9,7 +9,7 @@ SCREENMETA.WIDTH, SCREENMETA.HEIGHT  = love.window.getDesktopDimensions()
 local function SineTheWindowAcross(time, misc, window)
     local truey = SCREENMETA.HEIGHT/2 - window.h/2 --Keep the initial y level recorded for the sinewaves!
     local timesToSineAcross = misc.turns
-    local time = time/(4+3*timesToSineAcross) --splits steps evenly
+    local time = time/(4+3*(timesToSineAcross-1)) --splits steps evenly
 
     --A queue of preprogrammed flux statements
     local initialFlux
@@ -20,10 +20,10 @@ local function SineTheWindowAcross(time, misc, window)
 
     local function realfunction()
         if loopindex == 1 then
-            initialFlux = flux.to(window, time, {x = -window.x, y = truey})
+            initialFlux = flux.to(window, time, {x = -(window.w+1), y = truey})
         else
             if not loopedatindex[loopindex] then
-                initialFlux = flux.to(window, 0, {x = -(window.x+1), y = truey})
+                initialFlux = flux.to(window, 0, {x = -(window.w+1), y = truey})
             end
         end
         if initialFlux and (not loopedatindex[loopindex]) then
