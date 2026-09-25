@@ -13,7 +13,7 @@ WindowMover.debugMessage = "No issues :)"
 --values must be sent to the window.
 local window = {}
 window.x, window.y = love.window.getPosition()
-window.w, window.h = love.graphics.getDimensions()
+window.w, window.h = love.graphics.getPixelDimensions()
 
 --Choose a random list of events from the EVENTS table.
 --Runs on initialisation and every time an EVENTLIST is completed.

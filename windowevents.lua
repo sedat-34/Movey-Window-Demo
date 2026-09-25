@@ -74,8 +74,7 @@ local function LoopingTheScreen(time, misc, window)
 end
 
 function LastSizeTest(time, misc, window)
-    local truew, trueh = love.graphics.getPixelDimensions()
-    print(truew, trueh)
+    local truew, trueh = window.w, window.h
     local steptime = time/2
     flux.to(window, steptime, {w = truew/2, h = trueh/2}):
     after(window, steptime, {w = truew, h = trueh})
