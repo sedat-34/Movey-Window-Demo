@@ -4,7 +4,15 @@ Copyright (c) 2026 Sedat Arıtürk.
 See [LICENSE](LICENSE) for details on this project and its dependencies' licenses.
 See [CREDITS](CREDITS) for details on audiovisual assets used in this project.
 
-Made with [LOVE2D](https://github.com/love2d/love), for LOVE2D
+Made with [LÖVE2D](https://github.com/love2d/love), for LÖVE2D
+
+Notice: This demo uses functionality present only in LÖVE 12.0, which is as of yet not officialy released.
+
+Parts of this demo about resizing and scale will not perform as well under prior versions of LÖVE.
+
+LÖVE 12.0 builds can be obtained from love2d/love's github actions page.
+
+This demo was last tested on the build generated from commit b7daef0.
 
 ## What is this?
 
@@ -17,7 +25,7 @@ This is Movey-Window-Demo, made of
 Demonstrating a simple window moving across the screen from a random list of set functions.
 
 ## Running the demo:
-Install LOVE2D version 11.5 and set it up. Make sure "love" can run from your terminal.
+Install LOVE2D version 12.0 and set it up. Make sure "love" can run from your terminal.
 
 Navigate in a terminal of your choice to the directory where you wish to store the demo.
 
@@ -41,13 +49,3 @@ This is only the demo functionality. In theory, the program can run any type of 
 and load any set of arbitrary scripts.
 
 (provided that the movement can be recreated using the external library "flux". see legal info in LICENSE)
-
-Limitations: While the window can be moved very well, rescaling is problematic.
-
-Rapid resizing calls are really intensive to call. This makes it near-impossible to use
-
-flux to change the scale. After heavy testing, the planned feature was abandoned.
-
-The library still keeps track of the window's height and with, but only external scripts can
-
-modify the scale.

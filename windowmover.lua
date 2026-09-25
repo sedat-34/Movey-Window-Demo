@@ -39,15 +39,21 @@ function WindowMover:update()
         love.window.setPosition(window.x, window.y)
     end
     if window.w and window.h and dimentionsdifferent then
-        window.w, window.h = love.graphics.getDimensions()
+        love.window.updateMode(window.w, window.h)
     end
-
 end
 
 function WindowMover:draw()
     if self.image then
-        love.graphics.draw(self.image, -window.x, -window.y, 0, self.image_sx, self.image_sy)
+        local pixelx, pixely = window.x/love.graphics.getDPIScale(), window.y/love.graphics.getDPIScale()
+        love.graphics.draw(self.image, -pixelx, -pixely, 0, self.image_sx, self.image_sy)
     end
+end
+
+function WindowMover:handleResize()
+    if self.isLocked then return end
+    window.w, window.h = love.graphics.getPixelDimensions()
+    window.x, window.y = love.window.getPosition()
 end
 
 function WindowMover:setPositionAndScale(x, y, w, h) --When there is no access to the local "window" table, use this function to set the new position and scale.
@@ -81,11 +87,12 @@ function WindowMover:initiateEvent() --Continues execution of the current event 
 
 end
 
-function WindowMover:setImage(path) --Loads the image from the input path, scales it to the size of the desktop and hides all parts except what is shown behind the moving window.
+function WindowMover:setImage(path, filter) --Loads the image from the input path, scales it to the size of the desktop and hides all parts except what is shown behind the moving window.
 
     if self.image then self.image:release() end
 
     self.image = love.graphics.newImage(path)
+    if filter then self.image:setFilter(filter, filter) end
     local sw, sh = love.window.getDesktopDimensions()
     self.image_sx = sw/self.image:getWidth()
     self.image_sy = sh/self.image:getHeight()

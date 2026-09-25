@@ -3,6 +3,7 @@ flux = require "lib.flux"
 tick = require "lib.tick"
 
 function love.load()
+    love.setDeprecationOutput(false)
     love.graphics.setNewFont(30)
     WindowMover:setImage("assets/images/back.png")
     WindowMover:loadScript("windowevents")
@@ -12,6 +13,10 @@ function love.update(dt)
     WindowMover:update()
     flux.update(dt)
     tick.update(dt)
+end
+
+function love.resize()
+    WindowMover:handleResize()
 end
 
 function love.keypressed(key)

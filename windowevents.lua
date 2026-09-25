@@ -53,9 +53,9 @@ end
 local function LoopingTheScreen(time, misc, window)
     local turn = 0
     local totalturns = misc.turns
-    flux.to(window, 1, {x = -(window.w + 1), y = SCREENMETA.HEIGHT/2 - window.h/2})
+    local time = (time - 1)/totalturns
 
-    time = (time - 1)/totalturns
+    flux.to(window, 1, {x = -(window.w + 1), y = SCREENMETA.HEIGHT/2 - window.h/2})
 
     local function realfunction()
         if turn <= totalturns then
@@ -73,6 +73,14 @@ local function LoopingTheScreen(time, misc, window)
     realfunction()
 end
 
+function LastSizeTest(time, misc, window)
+    local truew, trueh = love.graphics.getPixelDimensions()
+    print(truew, trueh)
+    local steptime = time/2
+    flux.to(window, steptime, {w = truew/2, h = trueh/2}):
+    after(window, steptime, {w = truew, h = trueh})
+end
+
 --Other than func and time, please place all arguments in "misc".
 
 local SINE_ACROSS = {
@@ -85,9 +93,14 @@ local LOOP_TEST = {
     {func = CenterTheWindow, time = 5, misc = {} },
 }
 
+local LAST_SIZE_TEST = {
+    {func = LastSizeTest, time = 6, misc = {}}
+}
+
 EVENTS.EVENTLIST = {
     SINE_ACROSS,
-    LOOP_TEST
+    LOOP_TEST,
+    LAST_SIZE_TEST
 }
 
 return EVENTS
